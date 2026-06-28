@@ -5,19 +5,19 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
  * LLM Configuration — Gemini 2.5 Flash (Google DeepMind)
  * ══════════════════════════════════════════════════════════════
  *
- * Model:        gemini-2.5-flash
+ * Model:        gemini-2.5-flash-lite
  * Provider:     Google Generative AI (via @langchain/google-genai)
  * API Version:  v1beta
  * Context:      1,048,576 tokens (1M)
  * Max Output:   8,192 tokens (capped at 4,096 here for cost efficiency)
  * Temperature:  0.3 (low — prioritize factual, deterministic output)
  *
- * Why Gemini 2.5 Flash?
+ * Why Gemini 2.5 Flash Lite?
  * ─────────────────────
- * 1. Speed:   Flash models are optimized for low-latency inference,
+ * 1. Speed:   Lite models are hyper-optimized for latency,
  *             crucial for real-time SSE streaming in the agent pipeline.
- * 2. Quality: 2.5-generation delivers strong structured output (JSON)
- *             and reasoning — essential for financial analysis tasks.
+ * 2. Quota:   Separate rate limit pool with much higher daily capacity
+ *             compared to standard flash models on free tiers.
  * 3. Cost:    Free-tier access via Google AI Studio API key.
  * 4. Structured Output: Excellent at generating valid JSON for
  *             sentiment scores, verdict objects, and research plans.
@@ -35,7 +35,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
  */
 export function getModel() {
   return new ChatGoogleGenerativeAI({
-    model: "gemini-2.5-flash",
+    model: "gemini-2.5-flash-lite",
     temperature: 0.3,
     maxOutputTokens: 4096,
     apiKey: process.env.GOOGLE_API_KEY,
