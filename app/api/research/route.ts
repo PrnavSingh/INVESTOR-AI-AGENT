@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { buildResearchGraph } from "@/lib/agent/graph";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 120; // Allow up to 2 minutes for full research
+export const maxDuration = 60; // Max allowed on Vercel Hobby tier
 
 /**
  * POST /api/research

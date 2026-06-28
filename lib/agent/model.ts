@@ -61,8 +61,8 @@ export function getModel() {
  */
 export async function withRetry<T>(
   fn: () => Promise<T>,
-  maxRetries = 3,
-  baseDelayMs = 20000
+  maxRetries = 2,
+  baseDelayMs = 5000
 ): Promise<T> {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
