@@ -2,25 +2,26 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 
 /**
  * ══════════════════════════════════════════════════════════════
- * LLM Configuration — Gemini 2.5 Flash (Google DeepMind)
+ * LLM Configuration — Gemini 3.1 Flash Lite (Google DeepMind)
  * ══════════════════════════════════════════════════════════════
  *
- * Model:        gemini-2.5-flash-lite
+ * Model:        gemini-3.1-flash-lite
  * Provider:     Google Generative AI (via @langchain/google-genai)
  * API Version:  v1beta
  * Context:      1,048,576 tokens (1M)
  * Max Output:   8,192 tokens (capped at 4,096 here for cost efficiency)
  * Temperature:  0.3 (low — prioritize factual, deterministic output)
  *
- * Why Gemini 2.5 Flash Lite?
+ * Why Gemini 3.1 Flash Lite?
  * ─────────────────────
- * 1. Speed:   Lite models are hyper-optimized for latency,
- *             crucial for real-time SSE streaming in the agent pipeline.
- * 2. Quota:   Separate rate limit pool with much higher daily capacity
- *             compared to standard flash models on free tiers.
- * 3. Cost:    Free-tier access via Google AI Studio API key.
+ * 1. Working Quota: Through testing on the current API key,
+ *              this is the available working model (2.5 ran out).
+ * 2. Speed:    Flash Lite models are optimized for latency,
+ *              crucial for real-time SSE streaming in the agent pipeline.
+ * 3. Quality:  Latest generation with improved reasoning and
+ *              structured output capabilities.
  * 4. Structured Output: Excellent at generating valid JSON for
- *             sentiment scores, verdict objects, and research plans.
+ *              sentiment scores, verdict objects, and research plans.
  *
  * Rate Limiting Strategy:
  * ───────────────────────
@@ -35,7 +36,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
  */
 export function getModel() {
   return new ChatGoogleGenerativeAI({
-    model: "gemini-2.5-flash-lite",
+    model: "gemini-3.1-flash-lite",
     temperature: 0.3,
     maxOutputTokens: 4096,
     apiKey: process.env.GOOGLE_API_KEY,

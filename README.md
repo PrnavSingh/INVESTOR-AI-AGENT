@@ -21,7 +21,7 @@ Built with **Next.js (App Router)**, **LangGraph.js**, **Gemini 2.5 Flash**, **T
 - **PDF Export**: Generate professional, branded PDF reports of the research analysis with a single click using `jsPDF`.
 - **LLM Rate-Limit Resiliency**: Built-in exponential backoff to handle free-tier API quotas gracefully.
 
----
+----
 
 ## 🧠 The AI Brain: Model & Reasoning
 
